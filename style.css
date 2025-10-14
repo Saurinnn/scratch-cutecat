@@ -1,0 +1,262 @@
+/* --- CSSリセット（モダン）--- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: sans-serif;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/*カバーエリア*/
+
+.my-cover {
+  background-image: url("img/neko01.jpg");
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+}
+
+.cat-video {
+  opacity: 0.5;
+  -o-object-fit: cover;
+  object-fit: cover;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+.my-covertext {
+  background-color: #ffb6c1;
+  color: #fff;
+  font-size: 48px;
+  font-weight: 700;
+  width: 350px;
+  height: 150px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  border-top-right-radius: 10px;
+  text-align: center;
+}
+
+/*テキストエリア*/
+.text-area {
+  width: 100%;
+  background-color: #ffb6c1;
+  color: #696969;
+  text-align: center;
+  position: relative;
+  padding-top: 100px;
+  overflow: hidden;
+}
+
+.text-box{
+    margin: 0 auto;
+    width: 80%;
+    z-index: 2;
+    padding-bottom: 500px;
+    position: relative;
+}
+
+.text-area img{
+    margin: 0 auto;
+    width: 400px;
+    height: 600px;
+}
+
+.commontext {
+    color: #fff;
+    background-color: #ff69b4;
+    width: fit-content;
+
+}
+
+/* 丸背景（初期状態：非表示で小さい） */
+.text-oval {
+    width: 500px;
+    height: 500px;
+    background-color: rgba(250, 250, 210, 0.8);
+    border-radius: 50%;
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    z-index: 0;
+    transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+    pointer-events: none; /* hover操作を邪魔しない */
+    box-shadow: 0 0 60px 20px rgba(250, 250, 210, 0.5);
+  }
+  
+  /* text-boxにカーソルを乗せたら丸がふわっと出現 */
+  .text-box:hover ~ .text-oval {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+
+  .text03 {
+    /* 下部を左下へ20度傾斜 */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  
+
+
+/*ピクチャーエリア*/
+.picture-area01 {
+  position: relative;
+}
+.background{
+    background-image: url('img/neko04.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* ←ここで固定表示 */
+    position: absolute; /* wrap の中で配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
+.pic-area-content01{
+    height: 1100px;
+}
+
+.pic-area-subcontent01{
+    position: relative;
+    height: 1100px;
+}
+
+.rainbow {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.rainbow img {
+  width: 100%;
+}
+
+.picture-area02 {
+  background-image: url("img/neko03.jpg");
+  background-size: cover;
+  height: 100vh;
+  position: relative;
+  margin-top: -200px;
+  z-index: -1;
+}
+
+/*ギャラリー*/
+:root{
+    /* 調整用 */
+    --gap: 0;           /* 各アイテムの間隔 */
+    --height1: 120px;      /* 上段の高さ */
+    --height2: 120px;      /* 下段の高さ */
+    --duration1: 14s;      /* 上段アニメ速度（小さいほど速い）*/
+    --duration2: 18s;      /* 下段アニメ速度 */
+    --fade: 64px;          /* 両端のフェード幅 */
+    --bg: #fff;             背景色（サイトに合わせて変更）*/
+  }
+
+  .slideArea {
+    position: relative;
+    overflow: hidden;
+    padding: 40px 0;
+    /* 両端フェード（対応ブラウザ）*/
+    -webkit-mask-image: linear-gradient(90deg,
+      transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+    mask-image: linear-gradient(90deg,
+      transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
+  }
+
+  .row { 
+    position: relative;
+    width: 100%; 
+    overflow: hidden;
+  }
+
+  /* トラックは "コンテンツを2回並べる" ことで継ぎ目のないループを実現 */
+  .track {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: var(--gap);
+    will-change: transform;
+  }
+
+  /* 画像スタイル */
+  .item img { display: block; height: 100%; width: auto; }
+
+  /* 上段（左→右 or 右→左は任意に切替）*/
+  .row.row1 { height: var(--height1); 
+            margin-bottom: 18px; 
+        }
+
+  .row.row2 { height: var(--height2); }
+
+   サイズ感（サイトっぽく幅を固定したい場合）
+  .row.row1 .item { height: var(--height1); width: 400px; flex: 0 0 auto; }
+  .row.row2 .item { height: var(--height2); width: 258px; flex: 0 0 auto; }
+
+  /* アニメーション（無限ループ）*/
+  @keyframes marquee-ltr { /* 左→右 */
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+  @keyframes marquee-rtl { /* 右→左 */
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  .row1 .loop { animation: marquee-rtl var(--duration1) linear infinite; }
+  .row2 .loop { animation: marquee-ltr var(--duration2) linear infinite; }
+
+  /* OSの低速設定に追従 */
+  @media (prefers-reduced-motion: reduce) {
+    .loop { animation: none; }
+  }
+
+  /* レスポンシブ：スマホでは少し高さを抑える */
+  @media (max-width: 480px) {
+    :root { --height1: 88px; --height2: 72px; --fade: 32px; }
+    .row.row1 .item { width: 280px; }
+    .row.row2 .item { width: 220px; }
+  }
