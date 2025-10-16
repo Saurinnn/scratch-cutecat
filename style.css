@@ -77,6 +77,14 @@ ol {
   text-align: center;
 }
 
+.my-cover02{
+    background-image: url("img/catpeek.png");
+  background-size: cover;
+  height: 100vh;
+  overflow: visible;
+    z-index: 2;
+}
+
 /*テキストエリア*/
 .text-area {
   width: 100%;
@@ -86,6 +94,7 @@ ol {
   position: relative;
   padding-top: 100px;
   overflow: hidden;
+  z-index: -2;
 }
 
 .text-box{
@@ -187,19 +196,22 @@ ol {
 /*ギャラリー*/
 :root{
     /* 調整用 */
-    --gap: 0;           /* 各アイテムの間隔 */
+    --gap: 16px;           /* 各アイテムの間隔 */
     --height1: 120px;      /* 上段の高さ */
-    --height2: 120px;      /* 下段の高さ */
+    --height2: 100px;      /* 下段の高さ */
     --duration1: 14s;      /* 上段アニメ速度（小さいほど速い）*/
     --duration2: 18s;      /* 下段アニメ速度 */
     --fade: 64px;          /* 両端のフェード幅 */
-    --bg: #fff;             背景色（サイトに合わせて変更）*/
+    --bg: #fff;            /* 背景色（サイトに合わせて変更）*/
   }
 
-  .slideArea {
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); font-family: system-ui, sans-serif; color: #fff; }
+
+  .slideWrap {
     position: relative;
     overflow: hidden;
-    padding: 40px 0;
+    padding-block: 24px;
     /* 両端フェード（対応ブラウザ）*/
     -webkit-mask-image: linear-gradient(90deg,
       transparent 0, #000 var(--fade), #000 calc(100% - var(--fade)), transparent 100%);
@@ -226,14 +238,11 @@ ol {
   .item img { display: block; height: 100%; width: auto; }
 
   /* 上段（左→右 or 右→左は任意に切替）*/
-  .row.row1 { height: var(--height1); 
-            margin-bottom: 18px; 
-        }
-
+  .row.row1 { height: var(--height1); margin-bottom: 18px; }
   .row.row2 { height: var(--height2); }
 
-   サイズ感（サイトっぽく幅を固定したい場合）
-  .row.row1 .item { height: var(--height1); width: 400px; flex: 0 0 auto; }
+  /* サイズ感（サイトっぽく幅を固定したい場合）*/
+  .row.row1 .item { height: var(--height1); width: 344px; flex: 0 0 auto; }
   .row.row2 .item { height: var(--height2); width: 258px; flex: 0 0 auto; }
 
   /* アニメーション（無限ループ）*/
@@ -253,6 +262,27 @@ ol {
   @media (prefers-reduced-motion: reduce) {
     .loop { animation: none; }
   }
+
+ /*ギザギザの装飾*/
+ .slideArea {
+    position: relative;
+    overflow: visible;
+    background: #fff; 
+    z-index: 1;
+  }
+  
+  .zigzag-top,
+  .zigzag-bottom {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 20px;
+    fill: #fff;
+  }
+  
+  .zigzag-top { top: -20px; }
+  .zigzag-bottom { bottom: -20px; }
+  
 
   /* レスポンシブ：スマホでは少し高さを抑える */
   @media (max-width: 480px) {

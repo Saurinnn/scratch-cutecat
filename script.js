@@ -46,3 +46,34 @@ function setupInfiniteMarquee(track, { baseDuration = 16, reverse = false } = {}
 setupInfiniteMarquee(document.getElementById('track1'), { reverse: false });
 // 下段＝左→右
 setupInfiniteMarquee(document.getElementById('track2'), { reverse: true });
+
+document.addEventListener("DOMContentLoaded", () => {
+  // ギザギザを付けたい要素を取得
+  const slideArea = document.querySelector(".slideArea");
+
+  // 一辺の長さ(px)
+  const edge = 20;
+  // ギザギザの高さ(px)
+  const height = 20;
+
+  // 現在の横幅を取得
+  const width = slideArea.offsetWidth;
+
+  // ポリゴン座標を生成（下のギザギザ用）
+  function generateZigzagPolygon(edge, width, reverse = false) {
+    const points = [];
+    for (let x = 0; x <= width; x += edge) {
+      const y = (x / edge) % 2 === 0 ? (reverse ? 0 : 100) : (reverse ? 100 : 0);
+      points.push(`${x}px ${y}%`);
+    }
+    return `polygon(${points.join(", ")})`;
+  }
+
+  // clip-pathを生成して適用
+  const bottomZigzag = generateZigzagPolygon(edge, width, false);
+  const topZigzag = generateZigzagPolygon(edge, width, true);
+
+  // CSSカスタムプロパティで制御（:before, :after に適用）
+  slideArea.style.setProperty("--zigzag-top", topZigzag);
+  slideArea.style.setProperty("--zigzag-bottom", bottomZigzag);
+});
