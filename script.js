@@ -46,3 +46,22 @@ function setupInfiniteMarquee(track, { baseDuration = 16, reverse = false } = {}
 setupInfiniteMarquee(document.getElementById('track1'), { reverse: false });
 // 下段＝左→右
 setupInfiniteMarquee(document.getElementById('track2'), { reverse: true });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const images = document.querySelectorAll(".text-area img");
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("fade-in");
+        observer.unobserve(entry.target); // 一度表示したら監視を解除
+      }
+    });
+  }, {
+    threshold: 0.1 // 画像の10％が見えたら発火
+  });
+
+  images.forEach(img => {
+    observer.observe(img);
+  });
+});

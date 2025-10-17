@@ -82,7 +82,7 @@ ol {
   background-size: cover;
   height: 100vh;
   overflow: visible;
-    z-index: 2;
+    z-index: 0;
 }
 
 /*テキストエリア*/
@@ -95,6 +95,7 @@ ol {
   padding-top: 100px;
   overflow: hidden;
   z-index: -2;
+  cursor: url('img/point.png'), auto;
 }
 
 .text-box{
@@ -111,12 +112,28 @@ ol {
     height: 600px;
 }
 
+.text-area img {
+  opacity: 0;
+  transition: opacity 2s ease; /* 2秒で徐々に表示 */
+}
+
+/* 表示されたときに付与されるクラス */
+.text-area img.fade-in {
+  opacity: 1;
+}
+
 .commontext {
     color: #fff;
     background-color: #ff69b4;
     width: fit-content;
 
 }
+
+.text03 {
+    /* 下部を左下へ20度傾斜 */
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  }
+  
 
 /* 丸背景（初期状態：非表示で小さい） */
 .text-oval {
@@ -140,12 +157,6 @@ ol {
     transform: translate(-50%, -50%) scale(1);
     opacity: 1;
   }
-
-  .text03 {
-    /* 下部を左下へ20度傾斜 */
-    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
-  }
-  
 
 
 /*ピクチャーエリア*/
@@ -190,7 +201,7 @@ ol {
   height: 100vh;
   position: relative;
   margin-top: -200px;
-  z-index: -1;
+  z-index: -3;
 }
 
 /*ギャラリー*/
@@ -264,29 +275,104 @@ ol {
   }
 
  /*ギザギザの装飾*/
- .slideArea {
-    position: relative;
-    overflow: visible;
-    background: #fff; 
-    z-index: 1;
-  }
-  
-  .zigzag-top,
-  .zigzag-bottom {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 20px;
-    fill: #fff;
-  }
-  
-  .zigzag-top { top: -20px; }
-  .zigzag-bottom { bottom: -20px; }
-  
 
-  /* レスポンシブ：スマホでは少し高さを抑える */
-  @media (max-width: 480px) {
+ .jagged-border {
+    position: relative;
+    width: 100%;
+    height: 10px;
+    z-index: -1;
+  }
+  .jagged-border:before {
+    content: "";
+    display: block;
+    position: absolute;
+    top: -10px;
+    width: 100%;
+    height: 10px;
+  }
+  .white-bg {
+    background: #fff;
+  }
+  .white-bg:before {
+    background: -webkit-linear-gradient(45deg, transparent 33.333%, #fff 33.333%, #fff 66.667%, transparent 66.667%), -webkit-linear-gradient(135deg, transparent 33.333%, #fff 33.333%, #fff 66.667%, transparent 66.667%);
+    background: linear-gradient(45deg, transparent 33.333%, #fff 33.333%, #fff 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #fff 33.333%, #fff 66.667%, transparent 66.667%);
+    -webkit-background-size: 20px 40px;
+    background-size: 20px 40px;
+  }
+
+  .lightpink-bg {
+    background: #ffb6c1;
+  }
+  .lightpink-bg:before {
+    background: -webkit-linear-gradient(45deg, transparent 33.333%, #ffb6c1 33.333%, #ffb6c1 66.667%, transparent 66.667%), -webkit-linear-gradient(135deg, transparent 33.333%, #ffb6c1 33.333%, #ffb6c1 66.667%, transparent 66.667%);
+    background: linear-gradient(45deg, transparent 33.333%, #ffb6c1 33.333%, #ffb6c1 66.667%, transparent 66.667%), linear-gradient(-45deg, transparent 33.333%, #ffb6c1 33.333%, #ffb6c1 66.667%, transparent 66.667%);
+    -webkit-background-size: 20px 40px;
+    background-size: 20px 40px;
+  }
+  
+  /*レスポンシブ対応*/
+@media screen and (max-width: 900px) {
+  .my-cover {
+    background-position: center;
+  }
+
+  .my-covertext {
+    font-size: 24px;
+    font-weight: 700;
+    width: 200px;
+    height: 75px;
+  }
+
+  .picture-area02 {
+    background-position: center;
+}
+
+.pic-area-content01{
+  height: 500px;
+}
+
+.text-box{
+  font-size: 20px;
+}
+
+}
+
+  @media screen and (max-width: 540px) {
     :root { --height1: 88px; --height2: 72px; --fade: 32px; }
     .row.row1 .item { width: 280px; }
     .row.row2 .item { width: 220px; }
+
+    .text-box{
+      font-size: 16px;
+      padding-bottom: 200px;
+    }
+
+    .text-oval {
+      width: 300px;
+      height: 300px;
+    }
+
+    .commontext {
+      margin-bottom: 20px;
+  
+  }
+
+    .my-cover02{
+      position: relative;
+  }
+
+  .my-cover02 img{
+    position: absolute;
+    top: 200px;
+}
+
+    .pic-area-subcontent01{
+      position: relative;
+      height: 300px;
+  }
+
+  .picture-area02 {
+    margin-top: -220px;
+    }
+    
   }
