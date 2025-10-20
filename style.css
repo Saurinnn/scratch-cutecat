@@ -107,21 +107,29 @@ ol {
     position: relative;
 }
 
-.text-area img{
+.textcat{
     margin: 0 auto;
     width: 400px;
     height: 600px;
 }
 
-.text-area img {
+.textcat{
   opacity: 0;
-  transition: opacity 2s ease; /* 2秒で徐々に表示 */
+  transform: translateY(80px);
+  transition: opacity 2s ease,transform 2s ease; /* 2秒で徐々に表示 */
 }
 
 /* 表示されたときに付与されるクラス */
-.text-area img.fade-in {
+.textcat.fade-in {
   opacity: 1;
+  transform: translateY(0);
 }
+
+.idea-box.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 
 .commontext {
     color: #fff;
@@ -171,6 +179,9 @@ ol {
     display: flex;
     flex-wrap: wrap;
     margin-bottom: 100px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 2s ease,transform 2s ease;
   }
 
   .idea-item{

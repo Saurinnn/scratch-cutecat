@@ -48,7 +48,7 @@ setupInfiniteMarquee(document.getElementById('track1'), { reverse: false });
 setupInfiniteMarquee(document.getElementById('track2'), { reverse: true });
 
 document.addEventListener("DOMContentLoaded", () => {
-  const images = document.querySelectorAll(".text-area img");
+  const images = document.querySelectorAll(".textcat, .idea-box");
 
   const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
