@@ -82,6 +82,7 @@ ol {
   background-size: cover;
   height: 100vh;
   overflow: visible;
+  cursor: url('img/point.png'), auto;
     z-index: 0;
 }
 
@@ -158,6 +159,65 @@ ol {
     opacity: 1;
   }
 
+/*アイデアエリア*/
+.text04 h2{
+    margin-bottom: 50px;
+    font-size: 36px;
+}
+
+  .idea-box{
+    margin: 0 auto;
+    width: 900px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+  }
+
+  .idea-item{
+    background-color: rgba(250, 250, 210);
+    color: #696969;
+    width: 400px;
+    height: 266px;
+    margin: 10px;
+    padding: 20px;
+    object-fit: cover;
+    position: relative;
+  }
+
+  .idea-item:nth-child(4){
+    padding: 0; 
+  }
+
+  .idea-item h3{
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+
+  .idea-item img{
+    height: 266px;
+  }
+
+  .footprint{
+    position: absolute;
+    top: 150px;
+    left: 280px;
+    }
+
+  .footprint img{
+    width: 120px;
+    height: 120px;
+  } 
+
+  .number{
+    position: absolute;
+    top: 190px;
+    left: 320px;
+    font-size: 48px;
+    font-weight: 700;
+    color: #fff;
+    z-index: 3;
+  } 
+
 
 /*ピクチャーエリア*/
 .picture-area01 {
@@ -175,6 +235,20 @@ ol {
     height: 100%;
     z-index: -1;
   }
+
+  .background2{
+    background-image: url('img/neko02.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* ←ここで固定表示 */
+    position: absolute; /* wrap の中で配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+  }
+
 
 .pic-area-content01{
     height: 1100px;
