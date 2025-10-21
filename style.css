@@ -420,6 +420,21 @@ ol {
   font-size: 20px;
 }
 
+.idea-box{
+  width: 100%;
+  display: block;
+  }
+
+.idea-item{
+  margin: 0 auto;
+  margin-bottom: 20px;
+  }
+
+  .background2{
+    top: -15px;
+    left: 0;
+   }
+
 }
 
   @media screen and (max-width: 540px) {
@@ -448,7 +463,7 @@ ol {
 
   .my-cover02 img{
     position: absolute;
-    top: 200px;
+    top: 250px;
 }
 
     .pic-area-subcontent01{
@@ -459,5 +474,30 @@ ol {
   .picture-area02 {
     margin-top: -220px;
     }
+
+    .idea-item{
+      width: 300px;
+      height: 200px;
+      }
+
+      .footprint{
+        position: absolute;
+        top: 120px;
+        left: 200px;
+        }
+    
+      .footprint img{
+        width: 100px;
+        height: 100px;
+      } 
+
+      .number{
+        top: 150px;
+        left: 230px;
+        } 
+
+        .idea-item:nth-child(4) img{  
+          height: 200px;
+        }
     
   }
