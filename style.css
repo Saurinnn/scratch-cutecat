@@ -281,9 +281,8 @@ ol {
 }
 
 .picture-area02 {
-  background-image: url("img/neko03.jpg");
   background-size: cover;
-  height: 100vh;
+  height: 120vh;
   position: relative;
   margin-top: -200px;
   z-index: -3;
@@ -433,6 +432,7 @@ ol {
   .background2{
     top: -15px;
     left: 0;
+    height: 110%;
    }
 
 }
@@ -482,13 +482,13 @@ ol {
 
       .footprint{
         position: absolute;
-        top: 120px;
-        left: 200px;
+        top: 140px;
+        left: 210px;
         }
     
       .footprint img{
-        width: 100px;
-        height: 100px;
+        width: 80px;
+        height: 80px;
       } 
 
       .number{
